@@ -1,122 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brew & Bean | Online Ordering</title>
-    <style>
-        /* CSS: Styling the Form UI */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f1ea;
-            display: flex;
-            justify-content: center;
-            padding: 40px;
-        }
-
-        .order-container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        h1 { color: #4e342e; text-align: center; }
-
-        .form-group { margin-bottom: 20px; }
-        
-        label { display: block; font-weight: bold; margin-bottom: 8px; }
-
-        .addon-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding: 5px 0;
-        }
-
-        input[type="number"] {
-            width: 60px;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        /* Order Summary Styling */
-        .summary-box {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 2px dashed #4e342e;
-        }
-
-        .total-price {
-            font-size: 1.5rem;
-            color: #2e7d32;
-            font-weight: bold;
-            text-align: right;
-        }
-    </style>
+<title>Brew & Bean Café</title>
 </head>
 <body>
-
-<div class="order-container">
-    <h1>☕ Brew & Bean</h1>
-    
-    <div class="form-group">
-        <label for="quantity">How many coffees?</label>
-        <input type="number" id="quantity" value="1" min="1" oninput="calculateTotal()">
-    </div>
-
-    <div class="form-group">
-        <label>Customize your brew:</label>
-        
-        <div class="addon-item">
-            <label><input type="checkbox" class="addon" data-price="0.50" onchange="calculateTotal()"> Extra Shot</label>
-            <span>+$0.50</span>
-        </div>
-
-        <div class="addon-item">
-            <label><input type="checkbox" class="addon" data-price="0.75" onchange="calculateTotal()"> Oat Milk</label>
-            <span>+$0.75</span>
-        </div>
-
-        <div class="addon-item">
-            <label><input type="checkbox" class="addon" data-price="1.00" onchange="calculateTotal()"> Caramel Drizzle</label>
-            <span>+$1.00</span>
-        </div>
-    </div>
-
-    <div class="summary-box">
-        <h3>Order Summary</h3>
-        <p>Base Price (per cup): $4.00</p>
-        <div class="total-price">Total: $<span id="total-display">4.00</span></div>
-    </div>
-</div>
-
-<script>
-    // JavaScript: Dynamic Price Logic
-    function calculateTotal() {
-        const basePrice = 4.00;
-        const quantity = document.getElementById('quantity').value;
-        const checkboxes = document.querySelectorAll('.addon');
-        
-        let addonTotal = 0;
-
-        // Loop through checkboxes to see which are checked
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                addonTotal += parseFloat(checkbox.getAttribute('data-price'));
-            }
-        });
-
-        // Calculate Grand Total
-        const grandTotal = (basePrice + addonTotal) * quantity;
-
-        // Update the UI
-        document.getElementById('total-display').innerText = grandTotal.toFixed(2);
-    }
-</script>
-
+<h1>Brew & Bean Café </h1>
+<form>
+<!-- Coffee Selection -->
+<label>Select Coffee:</label>
+<select>
+<option>Espresso</option>
+<option>Latte</option>
+<option>Cappuccino</option>
+</select>
+<br><br>
+<!-- Quantity -->
+<label>Quantity:</label>
+<input type="number" min="1" value="1">
+<br><br>
+<!-- Add-ons -->
+<label>Add-ons:</label><br>
+<input type="checkbox"> Extra Sugar<br>
+<input type="checkbox"> Milk<br>
+<input type="checkbox"> Chocolate Syrup<br><br>
+<!-- Button -->
+<button type="button">Place Order</button>
+</form>
+<p>Order Summary will be shown here.</p>
+00:53
 </body>
 </html>
